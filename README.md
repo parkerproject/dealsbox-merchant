@@ -1,3 +1,3 @@
-Dealsbox-landing
+DEALSBOX Merchant
 ==================
-The Landing page for Dealsbox mobile app
+The source code for the DEALSBOX Merchant pages including the dashboard
