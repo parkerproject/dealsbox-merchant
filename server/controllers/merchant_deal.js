@@ -293,10 +293,7 @@ module.exports = {
           url: 'http://dealsbox.co/',
           small_image: payload.business_icon,
           merchant_address: payload.business_address,
-          zip_code: "",
-          Yelp_rating: "",
-          Yelp_categories: "",
-          Yelp_reviews: ""
+          zip_code: ""
         };
         if (payload.file) {
           var filename = payload.file.hapi.filename;
@@ -321,6 +318,7 @@ module.exports = {
             uploader.on('end', function () {
               fs.unlinkSync(imagePath);
               deal.large_image = 'https://s3.amazonaws.com/dealsbox/' + deal_id;
+              deal.small_image = 'https://s3.amazonaws.com/dealsbox/' + deal_id;
 
               if (payload.business_phone) { // search yelp for biz using business phone
                 var cleanPhone = payload.business_phone.replace(/[^A-Z0-9]/ig, "");
@@ -338,10 +336,6 @@ module.exports = {
                     if (error) console.log(error);
                     if (data.businesses.length === 1) {
                       yelp.business(data.businesses[0].id, function (error, data) {
-                        deal.Yelp_rating = data.rating;
-                        deal.Yelp_categories = data.categories;
-                        deal.Yelp_reviews = data.reviews;
-                        deal.small_image = data.image_url;
 
                         if (payload.business_lng == '' || payload.business_lat == '') {
                           deal.loc = {
