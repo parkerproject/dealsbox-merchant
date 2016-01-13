@@ -146,28 +146,33 @@ module.exports = {
       }
 
       var payload = request.payload;
-      if (payload.nonhumans.length === 0) {
-        var start_date = payload.deal_date.split('-')[0];
-        var end_date = payload.deal_date.split('-')[1];
-        var d = new Date();
-        var date_edited = d.toISOString();
-        var deal_id = payload.deal_id;
 
-        var deal = {
-          title: payload.title,
-          description: payload.description,
-          fine_print: payload.fine_print,
-          expires_at: end_date.trim(),
-          published: payload.publish,
-          start_date: start_date.trim(),
-          date_edited: date_edited
-        };
+      if (payload.nonhumans.length === 0) {
+
+        var deal_id = payload.deal_id;
+        var deal = {};
+
+        if (payload.deal_date) {
+          var start_date = payload.deal_date.split('-')[0];
+          var end_date = payload.deal_date.split('-')[1];
+          var d = new Date();
+          var date_edited = d.toISOString();
+          deal.start_date = start_date.trim();
+          deal.date_edited = date_edited;
+          deal.expires_at = end_date.trim();
+        }
+
+        if (payload.title) deal.title = payload.title;
+        if (payload.description) deal.description = payload.description;
+        if (payload.fine_print) deal.fine_print = payload.fine_print;
+        if (payload.publish) deal.published = payload.publish;
+
 
 
         if (payload.file && payload.file.hapi.filename.length !== 0) {
           var filename = payload.file.hapi.filename;
           filename = deal_id + path.extname(filename);
-          var imagePath = appRoot + "/deal_images/" + filename;
+          var imagePath = appRoot + "/public/images/" + filename || appRoot + "/deal_images/" + filename;
           var file = fs.createWriteStream(imagePath);
 
           // begin amazon image upload processing
