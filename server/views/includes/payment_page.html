@@ -28,14 +28,14 @@
   </section>
   <form action="/lab/payment" method="POST">
     <script src="https://checkout.stripe.com/checkout.js" class="stripe-button" data-key="pk_live_9xZBCqxsOvcil3BXQjT5lpPl" data-image="https://dl.dropboxusercontent.com/s/3pmt3totxquslep/avatar_b9d0ace3edc0_64.png?dl=0" data-name="DEALSBOX Merchants" data-description="Standard Plan ($49.99)"
-    data-amount="{{price}}">
+    data-amount="{{price}}" data-zip-code="true" data-email={{business_email}}>
     </script>
     <input type="hidden" value="{{subscriber}}" name="subscribe" />
     <input type="hidden" value="{{code_status}}" name="code_status" />
   </form>
   <small>Payment processing by</small>
   <img src="/images/stripe_small.png">
-  <p>
+  <p style="padding-top:20px;">
     <small>Credit card processing powered by
       <a href="https://stripe.com/" target="_blank">Stripe</a>. DEALSBOX Merchant does not store your payment information.
     </small>
@@ -44,9 +44,9 @@
 <div class="pull-left plan-info">
   <h4>Standard plan includes:</h4>
   <ul id="accordion">
-    <li><a href="#unlimitedcoupons">Unlimited Deals</a></li>
+    <li><a href="#unlimitedcoupons">Unlimited deals and campaigns</a></li>
     <li><a href="#freepromo">Free promotion via our Networks</a></li>
-    <li><a href="#sales">You keep 100% of your sales</a></li>
+    <li><a href="#sales">You keep 100% of your sales revenue</a></li>
     <!-- <li><a href="#marketing">Marketing Dashboard</a></li> -->
     <li><a href="#anytypedeals">Supports Any Type of Deal</a></li>
     <li><a href="#builder">Free Deal Builder</a></li>
@@ -58,7 +58,7 @@
 <section class="full">
   <div class="box-body">
     <div class="box-header">
-      <h3 class="box-title" id="unlimitedcoupons">Unlimited Deals</h3>
+      <h3 class="box-title" id="unlimitedcoupons">Unlimited deals and campaigns</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">
@@ -80,7 +80,7 @@
 
   <div class="box-body">
     <div class="box-header">
-      <h3 class="box-title" id="sales">You keep 100% of your sales</h3>
+      <h3 class="box-title" id="sales">You keep 100% of your sales revenue</h3>
     </div>
     <!-- /.box-header -->
     <div class="box-body">

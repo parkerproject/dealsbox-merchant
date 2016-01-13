@@ -16,8 +16,13 @@ module.exports = {
         plan: 'merchant00'
       };
 
-      if (request.payload.subscribe === 'no') customer.coupon = 'START40';
-      if (request.payload.subscribe === 'no' || request.payload.code_status === 'valid') customer.coupon = 'SAVE40';
+      if (request.payload.subscribe === 'no') {
+        customer.coupon = 'START40';
+      }
+
+      if (request.payload.subscribe === 'no' && request.payload.code_status === 'valid') {
+        customer.coupon = 'SAVE40';
+      }
 
       stripe.customers.create(customer, function (err, customer) {
         if (err) console.log(err);
@@ -37,7 +42,7 @@ module.exports = {
           },
           new: true
         }, function (err, doc, lastErrorObject) {
-          return reply.redirect('/deal');
+          return reply.redirect('/builder');
         });
 
       });
