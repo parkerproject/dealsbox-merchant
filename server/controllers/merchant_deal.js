@@ -298,6 +298,7 @@ module.exports = {
         if (payload.file) {
           var filename = payload.file.hapi.filename;
           filename = deal_id + path.extname(filename);
+          fs.chmodSync(appRoot + "/deal_images/", 777)
           var imagePath = appRoot + "/deal_images/" + filename;
           var file = fs.createWriteStream(imagePath);
 
