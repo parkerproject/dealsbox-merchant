@@ -200,7 +200,7 @@ module.exports = {
                   business_locality: request.payload.business_locality,
                   subscriber: "no",
                   password: hash,
-                  referral_code: request.payload.referral_code,
+                  referral_code: "",
                   referral_code_redeemed: 0,
                   business_id: randtoken.generate(20),
                   agreement: request.payload.agreement

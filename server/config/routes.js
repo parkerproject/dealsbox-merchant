@@ -128,6 +128,10 @@ module.exports = function (server) {
     method: ['GET', 'POST'],
     path: '/profile',
     config: controller.merchant.profile
+  }, {
+    method: 'POST',
+    path: '/coupon/validate',
+    config: controller.coupon.index
   }];
   return routeTable;
 };

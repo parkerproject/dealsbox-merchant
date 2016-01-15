@@ -77,7 +77,6 @@ function validateEmail(email) {
 
 function checkEmail() {
   var businessObj = {};
-  console.log(businessFound);
   businessObj.business_name = (businessFound === "true") ? $('input[name=business_place]').val() : $('input[name=business_name]').val()
   businessObj.business_email = $('input[name=business_email]').val();
   businessObj.password = $('input[name=password]').val();
