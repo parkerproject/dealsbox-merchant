@@ -1,3 +1,8 @@
+body{
+  font-family: 'Dosis';
+  font-size: 1.6em;
+}
+
 .button.button-primary {
     background-color: #DB462C;
     border-color: #DB462C;
@@ -173,4 +178,8 @@ hr {
     text-align: center;
     background-color: black;
     border-radius: 1em;
+}
+
+small{
+  font-size: 100%;
 }
