@@ -339,7 +339,8 @@ module.exports = {
 
   landing: {
     handler: function (request, reply) {
-      reply.view('merchant/merchant_landing', {})
+      // reply.view('merchant/merchant_landing', {})
+      return reply.redirect('https://merchant.placeful.co/')
 
     }
   }
